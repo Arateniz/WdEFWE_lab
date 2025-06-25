@@ -303,6 +303,7 @@ void genericHist(
 		stats->SetTextSize(0.03);
 	}
 
+	hist->SetFillColor(kAzure + 7);
 	c->Modified();
 	c->Update();
 
@@ -436,7 +437,7 @@ void drawCutFlow(
 
 	TCanvas *c = new TCanvas(
 		"cutflow_canvas", "Cut Flow",
-		600, 500
+		600, 400
 	);
 
 	(*hist)->SetStats(0);
@@ -509,7 +510,7 @@ void drawCompare(
 	TH1F* hFrame = new TH1F("hFrame", "", bins, lbound, rbound);
 	hFrame->SetTitle((lep_name + "; " + var_name + " [" + unit + "]; Counts").c_str());
 	hFrame->SetMinimum(0);
-	hFrame->SetMaximum(std::max(h_data->GetMaximum(), h_mc->GetMaximum()) * 1.4);
+	hFrame->SetMaximum(std::max(h_data->GetMaximum(), h_mc->GetMaximum()) * 1.1);
 	hFrame->GetYaxis()->SetTitleOffset(1.2);
 	hFrame->Draw();
 
@@ -630,51 +631,51 @@ void prog()
 
 	genericHist<UInt_t>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "lep_n", "-",
+		"pix/Higgs-MC-", "", "lep_n", "-",
 		2, 0, 2
 	);
 
 	genericHist<UInt_t>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_n", "-",
-		5, 0, 5
+		"pix/Higgs-MC-", "", "photon_n", "-",
+		5, 1.5, 4
 	);
 
 	genericHist<UInt_t>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "jet_n", "-",
-		13, 0, 10
+		"pix/Higgs-MC-", "", "jet_n", "-",
+		10, 0, 8
 	);
 
 	genericHist<float>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_pt", "GeV",
-		30, 0, 300
+		"pix/Higgs-MC-", "", "photon_pt", "GeV",
+		30, 0, 200
 	);
 
 	genericHist<float>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_eta", "-",
+		"pix/Higgs-MC-", "", "photon_eta", "-",
 		30, -3, 3
 	);
 
 	genericHist<float>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_phi", "rad",
-		30, -15, 15
+		"pix/Higgs-MC-", "", "photon_phi", "rad",
+		30, -4, 4
 	);
 
 	genericHist<float>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_pt", "GeV",
-		30, 0, 300,
+		"pix/Higgs-MC-", "", "photon_pt", "GeV",
+		30, 0, 200,
 		true, true
 	);
 
 	genericHist<float>(
 		{tree_gg},
-		"pix/Higgs-MC-", "H #rightarrow #gamma#gamma", "photon_pt", "GeV",
-		30, 0, 300,
+		"pix/Higgs-MC-", "", "photon_pt", "GeV",
+		30, 0, 200,
 		true, false
 	);
 
